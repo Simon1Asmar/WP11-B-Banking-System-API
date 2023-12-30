@@ -282,3 +282,27 @@ export const updateUserStatus = async (req, res, next) => {
     next(error);
   }
 };
+
+    // @des     Gets list of all users with X amount of cash 
+    // @route   GET api/v1/banking/users/filter/cash/:amount
+    // @access  Public
+    export const filterByAmountOfCash = async (req, res, next) => {
+      try {
+        const { amount } = req.params;
+
+        // Check if the amount is a valid number
+        if (isNaN(amount)) {
+          res.status(STATUS_CODE.BAD_REQUEST);
+          throw new Error("Invalid amount");
+        }
+    
+        const users = readUsersFromFile();
+    
+        // Filter users based on the specified amount of cash
+        const filteredUsers = users.filter(user => user.cash === parseFloat(amount));
+    
+        res.status(STATUS_CODE.OK).send(filteredUsers);
+      } catch (error) {
+        next(error)
+      }
+    }

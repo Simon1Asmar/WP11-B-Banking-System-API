@@ -3,6 +3,7 @@ import {
   createUser,
   deleteUser,
   depositMoney,
+  filterByAmountOfCash,
   getAllUsers,
   getUserById,
   transactMoney,
@@ -33,11 +34,10 @@ router.patch("/users/:from/transact/:to", transactMoney);
 // Route to DELETE user
 router.delete("/users/:id", deleteUser);
 
-// Route to filter the users
-// ???
+// Route to filter the users by amount of cash
+router.get("/users/filter/cash/:amount", filterByAmountOfCash)
 
 // EXTRA: Route to update account status "active" || "inActive
 router.patch("/users/:id/active", updateUserStatus);
-// ???
 
 export default router;

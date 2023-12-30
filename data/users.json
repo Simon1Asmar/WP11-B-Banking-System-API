@@ -4,7 +4,7 @@
     "firstName": "Simon",
     "lastName": "Asmar",
     "passportNumber": "1234",
-    "cash": 0,
+    "cash": 75000.5,
     "credit": 0,
     "isActive": true
   },
